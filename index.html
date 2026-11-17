@@ -1,799 +1,226 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="ru">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>Малыгин Артём — сайт-визитка</title>
-    <style>
-      :root {
-        --bg: #0f1220;
-        --card: #181c30;
-        --text: #e8eaf3;
-        --muted: #9aa0b8;
-        --accent: #6c8cff;
-        --accent2: #34d399;
-        --line: #2a2f4a;
-      }
-      * {
-        box-sizing: border-box;
-      }
-      html {
-        scroll-behavior: smooth;
-      }
-      body {
-        margin: 0;
-        font-family: "Segoe UI", Roboto, Arial, sans-serif;
-        background: var(--bg);
-        color: var(--text);
-        line-height: 1.65;
-      }
-      a {
-        color: var(--accent);
-      }
-      header.nav {
-        position: sticky;
-        top: 0;
-        z-index: 10;
-        background: rgba(15, 18, 32, 0.92);
-        backdrop-filter: blur(8px);
-        border-bottom: 1px solid var(--line);
-      }
-      header.nav nav {
-        max-width: 1000px;
-        margin: auto;
-        padding: 12px 20px;
-        display: flex;
-        gap: 18px;
-        flex-wrap: wrap;
-      }
-      header.nav a {
-        color: var(--muted);
-        text-decoration: none;
-        font-size: 0.92rem;
-      }
-      header.nav a:hover {
-        color: var(--text);
-      }
-      .hero {
-        max-width: 1000px;
-        margin: auto;
-        padding: 80px 20px 50px;
-      }
-      .hero small {
-        color: var(--accent2);
-        letter-spacing: 0.12em;
-        text-transform: uppercase;
-      }
-      .hero h1 {
-        font-size: clamp(2rem, 6vw, 3.4rem);
-        margin: 0.3em 0;
-        line-height: 1.15;
-      }
-      .hero p {
-        color: var(--muted);
-        max-width: 640px;
-        font-size: 1.1rem;
-      }
-      .btn {
-        display: inline-block;
-        margin: 8px 10px 0 0;
-        padding: 10px 20px;
-        border-radius: 8px;
-        background: var(--accent);
-        color: #0f1220;
-        font-weight: 600;
-        text-decoration: none;
-      }
-      .btn.ghost {
-        background: none;
-        border: 1px solid var(--accent);
-        color: var(--accent);
-      }
-      section {
-        max-width: 1000px;
-        margin: auto;
-        padding: 50px 20px;
-      }
-      h2 {
-        font-size: 1.7rem;
-        margin: 0 0 20px;
-      }
-      h2 span {
-        color: var(--accent);
-        margin-right: 8px;
-      }
-      .card {
-        background: var(--card);
-        border: 1px solid var(--line);
-        border-radius: 12px;
-        padding: 22px;
-      }
-      .grid {
-        display: grid;
-        gap: 16px;
-        grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-      }
-      dl {
-        margin: 0;
-        display: grid;
-        grid-template-columns: max-content 1fr;
-        gap: 8px 20px;
-      }
-      dt {
-        color: var(--muted);
-      }
-      dd {
-        margin: 0;
-      }
-      .tags {
-        display: flex;
-        flex-wrap: wrap;
-        gap: 8px;
-        margin-top: 10px;
-      }
-      .tags li {
-        list-style: none;
-        padding: 5px 12px;
-        border-radius: 999px;
-        background: #232846;
-        border: 1px solid var(--line);
-        font-size: 0.9rem;
-      }
-      ul.tags {
-        padding: 0;
-        margin: 10px 0 0;
-      }
-      h3 {
-        margin: 0 0 8px;
-        font-size: 1.1rem;
-      }
-      .card p {
-        margin: 0.4em 0;
-        color: var(--muted);
-      }
-      .cert {
-        padding: 12px;
-        text-decoration: none;
-        color: inherit;
-        display: block;
-      }
-      .cert img {
-        width: 100%;
-        border-radius: 8px;
-        display: block;
-        background: #fff;
-      }
-      .cert h3 {
-        margin: 12px 0 2px;
-      }
-      .cert p {
-        font-size: 0.88rem;
-      }
-      .timeline {
-        border-left: 2px solid var(--line);
-        padding-left: 20px;
-        display: grid;
-        gap: 14px;
-      }
-      .timeline b {
-        color: var(--accent2);
-      }
-      footer {
-        text-align: center;
-        color: var(--muted);
-        padding: 40px 20px;
-        border-top: 1px solid var(--line);
-      }
-      @media (max-width: 560px) {
-        dl {
-          grid-template-columns: 1fr;
-        }
-        dt {
-          margin-top: 6px;
-        }
-      }
-      /* --- v2 --- */
-      .brand {
-        display: flex;
-        align-items: center;
-        gap: 8px;
-        margin-right: auto;
-        color: var(--text);
-        text-decoration: none;
-        font-weight: 700;
-      }
-      .brand svg {
-        width: 30px;
-        height: 30px;
-      }
-      header.nav nav {
-        align-items: center;
-      }
-      .hero-wrap {
-        max-width: 1000px;
-        margin: auto;
-        padding: 70px 20px 40px;
-        display: grid;
-        gap: 36px;
-        grid-template-columns: 1.4fr 1fr;
-        align-items: center;
-      }
-      .hero-wrap .hero {
-        padding: 0;
-        margin: 0;
-        max-width: none;
-      }
-      .photo {
-        width: 100%;
-        max-width: 340px;
-        aspect-ratio: 4/5;
-        object-fit: cover;
-        border-radius: 20px;
-        border: 2px solid var(--accent);
-        justify-self: center;
-      }
-      .deco {
-        width: 100%;
-        height: auto;
-        display: block;
-        margin-top: 24px;
-        max-width: 520px;
-      }
-      .gallery {
-        display: grid;
-        gap: 24px 16px;
-        grid-template-columns: repeat(2, 1fr);
-        align-items: start;
-      }
-      .gallery figure {
-        margin: 0;
-      }
-      .gallery img {
-        width: 100%;
-        height: auto;
-        border-radius: 10px;
-        background: #fff;
-        display: block;
-        border: 1px solid var(--line);
-      }
-      .gallery figcaption {
-        color: var(--muted);
-        font-size: 0.9rem;
-        margin-top: 8px;
-      }
-      .links {
-        display: flex;
-        flex-wrap: wrap;
-        gap: 10px;
-        margin-top: 14px;
-        padding: 0;
-        list-style: none;
-      }
-      .links a {
-        display: block;
-        padding: 8px 14px;
-        border: 1px solid var(--line);
-        border-radius: 8px;
-        text-decoration: none;
-        background: #232846;
-      }
-      form {
-        display: grid;
-        gap: 14px;
-      }
-      label {
-        display: grid;
-        gap: 6px;
-        color: var(--muted);
-        font-size: 0.92rem;
-      }
-      input,
-      textarea {
-        font: inherit;
-        padding: 10px 12px;
-        border-radius: 8px;
-        border: 1px solid var(--line);
-        background: #0f1220;
-        color: var(--text);
-        width: 100%;
-      }
-      input:focus,
-      textarea:focus {
-        outline: 2px solid var(--accent);
-      }
-      .err {
-        color: #ff7b7b;
-        font-size: 0.85rem;
-        min-height: 1em;
-      }
-      .ok {
-        color: var(--accent2);
-      }
-      button.btn {
-        border: 0;
-        cursor: pointer;
-        font: inherit;
-        font-weight: 600;
-        justify-self: start;
-      }
-      .contacts {
-        display: grid;
-        gap: 20px;
-        grid-template-columns: 1fr 1.3fr;
-        align-items: start;
-      }
-      footer .soc {
-        display: flex;
-        gap: 14px;
-        justify-content: center;
-        margin: 14px 0;
-      }
-      footer .soc a {
-        width: 42px;
-        height: 42px;
-        border-radius: 50%;
-        border: 1px solid var(--line);
-        display: grid;
-        place-items: center;
-        color: var(--text);
-      }
-      footer .soc a:hover {
-        border-color: var(--accent);
-        color: var(--accent);
-      }
-      footer .soc svg {
-        width: 22px;
-        height: 22px;
-        fill: currentColor;
-      }
-      footer a {
-        color: var(--accent);
-      }
-      @media (max-width: 760px) {
-        .hero-wrap,
-        .contacts {
-          grid-template-columns: 1fr;
-        }
-        .photo {
-          max-width: 260px;
-        }
-      }
-      @media (max-width: 480px) {
-        .gallery {
-          grid-template-columns: 1fr;
-        }
-        .brand span {
-          display: none;
-        }
-      }
-    </style>
-  </head>
-  <body>
-    <header class="nav">
-      <nav>
-        <a class="brand" href="#home" aria-label="На главную">
-          <svg
-            width="30"
-            height="30"
-            viewBox="0 0 40 40"
-            xmlns="http://www.w3.org/2000/svg"
-          >
-            <rect width="40" height="40" rx="10" fill="#6c8cff" />
-            <path
-              d="M8 29 15 11l5 12 5-12 7 18"
-              fill="none"
-              stroke="#0f1220"
-              stroke-width="3.2"
-              stroke-linecap="round"
-              stroke-linejoin="round"
-            /></svg
-          ><span>Артём Малыгин</span></a
-        >
-        <a href="#home">Главная</a><a href="#about">Обо мне</a
-        ><a href="#portfolio">Портфолио</a><a href="#contacts">Контакты</a>
-      </nav>
-    </header>
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Малыгин Артём — сайт-визитка</title>
+<style>
+:root{--bg:#0f1220;--card:#181c30;--text:#e8eaf3;--muted:#9aa0b8;--accent:#6c8cff;--accent2:#34d399;--line:#2a2f4a}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;font-family:"Segoe UI",Roboto,Arial,sans-serif;background:var(--bg);color:var(--text);line-height:1.65}
+a{color:var(--accent)}
+header.nav{position:sticky;top:0;z-index:10;background:rgba(15,18,32,.92);backdrop-filter:blur(8px);border-bottom:1px solid var(--line)}
+header.nav nav{max-width:1000px;margin:auto;padding:12px 20px;display:flex;gap:18px;flex-wrap:wrap}
+header.nav a{color:var(--muted);text-decoration:none;font-size:.92rem}
+header.nav a:hover{color:var(--text)}
+.hero{max-width:1000px;margin:auto;padding:80px 20px 50px}
+.hero small{color:var(--accent2);letter-spacing:.12em;text-transform:uppercase}
+.hero h1{font-size:clamp(2rem,6vw,3.4rem);margin:.3em 0;line-height:1.15}
+.hero p{color:var(--muted);max-width:640px;font-size:1.1rem}
+.btn{display:inline-block;margin:8px 10px 0 0;padding:10px 20px;border-radius:8px;background:var(--accent);color:#0f1220;font-weight:600;text-decoration:none}
+.btn.ghost{background:none;border:1px solid var(--accent);color:var(--accent)}
+section{max-width:1000px;margin:auto;padding:50px 20px}
+h2{font-size:1.7rem;margin:0 0 20px}
+h2 span{color:var(--accent);margin-right:8px}
+.card{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:22px}
+.grid{display:grid;gap:16px;grid-template-columns:repeat(auto-fit,minmax(260px,1fr))}
+dl{margin:0;display:grid;grid-template-columns:max-content 1fr;gap:8px 20px}
+dt{color:var(--muted)}dd{margin:0}
+.tags{display:flex;flex-wrap:wrap;gap:8px;margin-top:10px}
+.tags li{list-style:none;padding:5px 12px;border-radius:999px;background:#232846;border:1px solid var(--line);font-size:.9rem}
+ul.tags{padding:0;margin:10px 0 0}
+h3{margin:0 0 8px;font-size:1.1rem}
+.card p{margin:.4em 0;color:var(--muted)}
+.cert{padding:12px;text-decoration:none;color:inherit;display:block}
+.cert img{width:100%;border-radius:8px;display:block;background:#fff}
+.cert h3{margin:12px 0 2px}
+.cert p{font-size:.88rem}
+.timeline{border-left:2px solid var(--line);padding-left:20px;display:grid;gap:14px}
+.timeline b{color:var(--accent2)}
+footer{text-align:center;color:var(--muted);padding:40px 20px;border-top:1px solid var(--line)}
+@media(max-width:560px){dl{grid-template-columns:1fr}dt{margin-top:6px}}
+/* --- v2 --- */
+.brand{display:flex;align-items:center;gap:8px;margin-right:auto;color:var(--text);text-decoration:none;font-weight:700}
+.brand svg{width:30px;height:30px}
+header.nav nav{align-items:center}
+.hero-wrap{max-width:1000px;margin:auto;padding:70px 20px 40px;display:grid;gap:36px;grid-template-columns:1.4fr 1fr;align-items:center}
+.hero-wrap .hero{padding:0;margin:0;max-width:none}
+.photo{width:100%;max-width:340px;aspect-ratio:4/5;object-fit:cover;border-radius:20px;border:2px solid var(--accent);justify-self:center}
+.deco{width:100%;height:auto;display:block;margin-top:24px;max-width:520px}
+.gallery{display:grid;gap:24px 16px;grid-template-columns:repeat(2,1fr);align-items:start}
+.gallery figure{margin:0}
+.gallery img{width:100%;height:auto;border-radius:10px;background:#fff;display:block;border:1px solid var(--line)}
+.gallery figcaption{color:var(--muted);font-size:.9rem;margin-top:8px}
+.links{display:flex;flex-wrap:wrap;gap:10px;margin-top:14px;padding:0;list-style:none}
+.links a{display:block;padding:8px 14px;border:1px solid var(--line);border-radius:8px;text-decoration:none;background:#232846}
+form{display:grid;gap:14px}
+label{display:grid;gap:6px;color:var(--muted);font-size:.92rem}
+input,textarea{font:inherit;padding:10px 12px;border-radius:8px;border:1px solid var(--line);background:#0f1220;color:var(--text);width:100%}
+input:focus,textarea:focus{outline:2px solid var(--accent)}
+.err{color:#ff7b7b;font-size:.85rem;min-height:1em}
+.ok{color:var(--accent2)}
+button.btn{border:0;cursor:pointer;font:inherit;font-weight:600;justify-self:start}
+.contacts{display:grid;gap:20px;grid-template-columns:1fr 1.3fr;align-items:start}
+footer .soc{display:flex;gap:14px;justify-content:center;margin:14px 0}
+footer .soc a{width:42px;height:42px;border-radius:50%;border:1px solid var(--line);display:grid;place-items:center;color:var(--text)}
+footer .soc a:hover{border-color:var(--accent);color:var(--accent)}
+footer .soc svg{width:22px;height:22px;fill:currentColor}
+footer a{color:var(--accent)}
+@media(max-width:760px){.hero-wrap,.contacts{grid-template-columns:1fr}.photo{max-width:260px}}
+@media(max-width:480px){.gallery{grid-template-columns:1fr}.brand span{display:none}header.nav nav{gap:12px;padding:12px 14px}header.nav a{font-size:.85rem}}
 
-    <main>
-      <div id="home" class="hero-wrap">
-        <div class="hero">
-          <small>ГУАП · Прикладной ИИ и наука о данных</small>
-          <h1>Малыгин Артём Степанович</h1>
-          <p>
-            Студент группы 4616, направление 09.03.03 «Прикладная информатика»,
-            образовательная программа «Прикладной искусственный интеллект и
-            наука о данных». Пишу код, делаю игры и сайты и хочу научиться
-            создавать умные системы на основе данных. Интересуюсь
-            Fullstack-разработкой и машинным обучением.
-          </p>
-          <a class="btn" href="#portfolio">Мои работы</a>
-          <a
-            class="btn ghost"
-            href="https://github.com/bambaleylaorigin"
-            target="_blank"
-            rel="noopener"
-            >GitHub</a
-          >
-          <svg
-            class="deco"
-            width="520"
-            height="120"
-            viewBox="0 0 520 120"
-            xmlns="http://www.w3.org/2000/svg"
-            role="img"
-            aria-label="Схема нейронной сети"
-          >
-            <g stroke="#6c8cff" stroke-opacity=".5" stroke-width="1.5">
-              <path
-                d="M40 20 200 60M40 20 200 100M40 60 200 20M40 60 200 100M40 100 200 20M40 100 200 60M200 20 360 40M200 20 360 80M200 60 360 40M200 60 360 80M200 100 360 40M200 100 360 80M360 40 480 60M360 80 480 60"
-              />
-            </g>
-            <g fill="#34d399">
-              <circle cx="40" cy="20" r="9" />
-              <circle cx="40" cy="60" r="9" />
-              <circle cx="40" cy="100" r="9" />
-            </g>
-            <g fill="#6c8cff">
-              <circle cx="200" cy="20" r="9" />
-              <circle cx="200" cy="60" r="9" />
-              <circle cx="200" cy="100" r="9" />
-              <circle cx="360" cy="40" r="9" />
-              <circle cx="360" cy="80" r="9" />
-            </g>
-            <circle cx="480" cy="60" r="11" fill="#e8eaf3" />
-          </svg>
-        </div>
-        <img
-          class="photo"
-          src="img/photo.jpg"
-          width="340"
-          height="425"
-          alt="Фото Малыгина Артёма"
-        />
-      </div>
+</style>
+</head>
+<body>
+<header class="nav"><nav>
+<a class="brand" href="#home" aria-label="На главную">
+<svg width="30" height="30" viewBox="0 0 40 40" xmlns="http://www.w3.org/2000/svg"><rect width="40" height="40" rx="10" fill="#6c8cff"/><path d="M8 29 15 11l5 12 5-12 7 18" fill="none" stroke="#0f1220" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round"/></svg><span>Артём Малыгин</span></a>
+<a href="#home">Главная</a><a href="#about">Обо мне</a><a href="#portfolio">Портфолио</a><a href="#contacts">Контакты</a>
+</nav></header>
 
-      <section id="about">
-        <h2>Обо мне</h2>
+<main>
+<div id="home" class="hero-wrap">
+<div class="hero">
+<small>ГУАП · Прикладной ИИ и наука о данных</small>
+<h1>Малыгин Артём Степанович</h1>
+<p>Студент группы 4616, направление 09.03.03 «Прикладная информатика», образовательная программа «Прикладной искусственный интеллект и наука о данных». Пишу код, делаю игры и сайты и хочу научиться создавать умные системы на основе данных. Интересуюсь Fullstack-разработкой и машинным обучением.</p>
+<a class="btn" href="#portfolio">Мои работы</a>
+<a class="btn ghost" href="https://github.com/bambaleylaorigin" target="_blank" rel="noopener">GitHub</a>
+<svg class="deco" width="520" height="120" viewBox="0 0 520 120" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Схема нейронной сети">
+<g stroke="#6c8cff" stroke-opacity=".5" stroke-width="1.5">
+<path d="M40 20 200 60M40 20 200 100M40 60 200 20M40 60 200 100M40 100 200 20M40 100 200 60M200 20 360 40M200 20 360 80M200 60 360 40M200 60 360 80M200 100 360 40M200 100 360 80M360 40 480 60M360 80 480 60"/></g>
+<g fill="#34d399"><circle cx="40" cy="20" r="9"/><circle cx="40" cy="60" r="9"/><circle cx="40" cy="100" r="9"/></g>
+<g fill="#6c8cff"><circle cx="200" cy="20" r="9"/><circle cx="200" cy="60" r="9"/><circle cx="200" cy="100" r="9"/><circle cx="360" cy="40" r="9"/><circle cx="360" cy="80" r="9"/></g>
+<circle cx="480" cy="60" r="11" fill="#e8eaf3"/></svg>
+</div>
+<img class="photo" src="img/photo.jpg" width="340" height="425" alt="Фото Малыгина Артёма">
+</div>
 
-        <h3>Краткая информация</h3>
-        <div class="card">
-          <dl>
-            <dt>ФИО</dt>
-            <dd>Малыгин Артём Степанович</dd>
-            <dt>Группа</dt>
-            <dd>4616</dd>
-            <dt>Направление</dt>
-            <dd>09.03.03 «Прикладная информатика»</dd>
-            <dt>Программа</dt>
-            <dd>«Системы искусственного интеллекта и наука о данных»</dd>
-            <dt>Образование</dt>
-            <dd>IT-школа, диплом с отличием (красный диплом)</dd>
-          </dl>
-        </div>
+<section id="about">
+<h2>Обо мне</h2>
 
-        <h3 style="margin-top: 28px">
-          Как я понимаю образовательную программу
-        </h3>
-        <div class="card">
-          <p>
-            Программа готовит специалистов, которые умеют не только писать код,
-            но и извлекать из данных пользу: собирать и очищать данные, строить
-            математические модели, обучать нейронные сети и встраивать результат
-            в работающие продукты.
-          </p>
-          <p>
-            Фундамент здесь — математика (линейная алгебра, статистика),
-            программирование и базы данных. На нём строятся машинное обучение,
-            анализ данных и прикладные ИИ-системы для бизнеса, медицины,
-            промышленности и других сфер.
-          </p>
-          <p>
-            Больше всего меня привлекает связка «теория + практика»: возможность
-            понять, как модель устроена внутри, и применить её к реальной
-            задаче.
-          </p>
-        </div>
+<h3>Краткая информация</h3>
+<div class="card"><dl>
+<dt>ФИО</dt><dd>Малыгин Артём Степанович</dd>
+<dt>Группа</dt><dd>4616</dd>
+<dt>Направление</dt><dd>09.03.03 «Прикладная информатика»</dd>
+<dt>Программа</dt><dd>«Прикладной искусственный интеллект и наука о данных»</dd>
+<dt>Образование</dt><dd>IT-школа, диплом с отличием (красный диплом)</dd>
+</dl></div>
 
-        <h3 style="margin-top: 28px">Почему я выбрал эту программу</h3>
-        <div class="grid">
-          <div class="card">
-            <h3>Интерес к ИИ</h3>
-            <p>
-              Курс «Введение в машинное обучение» от «Сириуса» показал, что ML —
-              это интересно и мне по силам. Хочется идти глубже.
-            </p>
-          </div>
-          <div class="card">
-            <h3>Любовь к программированию</h3>
-            <p>
-              Я уже делаю игры и сайты и хочу не только писать код, но и давать
-              ему «интеллект».
-            </p>
-          </div>
-          <div class="card">
-            <h3>Перспективы</h3>
-            <p>
-              ИИ и данные — одна из самых быстрорастущих областей IT с широким
-              выбором профессий.
-            </p>
-          </div>
-        </div>
+<h3 style="margin-top:28px">Как я понимаю образовательную программу</h3>
+<div class="card">
+<p>Программа готовит специалистов, которые умеют не только писать код, но и извлекать из данных пользу: собирать и очищать данные, строить математические модели, обучать нейронные сети и встраивать результат в работающие продукты.</p>
+<p>Фундамент здесь — математика (линейная алгебра, статистика), программирование и базы данных. На нём строятся машинное обучение, анализ данных и прикладные ИИ-системы для бизнеса, медицины, промышленности и других сфер.</p>
+<p>Больше всего меня привлекает связка «теория + практика»: возможность понять, как модель устроена внутри, и применить её к реальной задаче.</p>
+</div>
 
-        <h3 style="margin-top: 28px">Профессиональные планы</h3>
-        <div class="card">
-          <p>
-            После университета я хочу работать в IT-компании
-            <b>ML-разработчиком</b> или <b>Fullstack-разработчиком</b> —
-            идеально, если получится совмещать: создавать модели и делать вокруг
-            них удобные сервисы (API, веб-интерфейсы).
-          </p>
-          <div class="timeline" style="margin-top: 18px">
-            <div>
-              <b>Ближайшие годы:</b> укрепить математику и алгоритмы, углубиться
-              в PyTorch и классический ML, участвовать в хакатонах и командных
-              проектах.
-            </div>
-            <div>
-              <b>Среднесрочно:</b> стажировка в IT-компании, собственные
-              ML-проекты с развёрнутым сервисом.
-            </div>
-            <div>
-              <b>В перспективе:</b> стать инженером, который доводит ИИ-решения
-              от идеи до продакшена.
-            </div>
-          </div>
-        </div>
+<h3 style="margin-top:28px">Почему я выбрал эту программу</h3>
+<div class="grid">
+<div class="card"><h3>Интерес к ИИ</h3><p>Курс «Введение в машинное обучение» от «Сириуса» показал, что ML — это интересно и мне по силам. Хочется идти глубже.</p></div>
+<div class="card"><h3>Любовь к программированию</h3><p>Я уже делаю игры и сайты и хочу не только писать код, но и давать ему «интеллект».</p></div>
+<div class="card"><h3>Перспективы</h3><p>ИИ и данные — одна из самых быстрорастущих областей IT с широким выбором профессий.</p></div>
+</div>
 
-        <h3 style="margin-top: 28px">Навыки в IT</h3>
-        <div class="grid">
-          <div class="card">
-            <h3>Языки</h3>
-            <ul class="tags">
-              <li>Python</li>
-              <li>JavaScript</li>
-              <li>C++</li>
-              <li>SQL</li>
-              <li>HTML</li>
-              <li>CSS</li>
-            </ul>
-          </div>
-          <div class="card">
-            <h3>Backend</h3>
-            <ul class="tags">
-              <li>FastAPI</li>
-              <li>Flask</li>
-              <li>Express</li>
-              <li>Pydantic</li>
-            </ul>
-          </div>
-          <div class="card">
-            <h3>ML</h3>
-            <ul class="tags">
-              <li>PyTorch</li>
-              <li>Линейная алгебра</li>
-            </ul>
-          </div>
-        </div>
-        <div class="card" style="margin-top: 16px">
-          <p>
-            Окончил IT-школу с красным дипломом. Самостоятельно прошёл курсы
-            Яндекс Лицея и «Сириуса». Хочу научиться промышленному ML и MLOps,
-            построению нагруженных сервисов и глубокому обучению.
-          </p>
-        </div>
-      </section>
+<h3 style="margin-top:28px">Профессиональные планы</h3>
+<div class="card">
+<p>После университета я хочу работать в IT-компании <b>ML-разработчиком</b> или <b>Fullstack-разработчиком</b> — идеально, если получится совмещать: создавать модели и делать вокруг них удобные сервисы (API, веб-интерфейсы).</p>
+<div class="timeline" style="margin-top:18px">
+<div><b>Ближайшие годы:</b> укрепить математику и алгоритмы, углубиться в PyTorch и классический ML, участвовать в хакатонах и командных проектах.</div>
+<div><b>Среднесрочно:</b> стажировка в IT-компании, собственные ML-проекты с развёрнутым сервисом.</div>
+<div><b>В перспективе:</b> стать инженером, который доводит ИИ-решения от идеи до продакшена.</div>
+</div></div>
 
-      <section id="portfolio">
-        <h2>Портфолио</h2>
-        <h3>Проекты</h3>
-        <div class="grid">
-          <div class="card">
-            <h3>2D-игра</h3>
-            <p>
-              Игра, созданная командой Drunk Wizard Studio на джеме ЮниГеймЛаб.
-            </p>
-          </div>
-          <div class="card">
-            <h3>Сайт — аналог Wildberries</h3>
-            <p>
-              Fullstack-проект маркетплейса: каталог товаров и серверная часть.
-            </p>
-          </div>
-          <div class="card">
-            <h3>Сайт для слепой печати</h3>
-            <p>Веб-тренажёр для развития навыка печати вслепую.</p>
-          </div>
-        </div>
-        <p>
-          Код проектов — на
-          <a
-            href="https://github.com/bambaleylaorigin"
-            target="_blank"
-            rel="noopener"
-            >GitHub</a
-          >.
-        </p>
+<h3 style="margin-top:28px">Навыки в IT</h3>
+<div class="grid">
+<div class="card"><h3>Языки</h3><ul class="tags"><li>Python</li><li>JavaScript</li><li>C++</li><li>SQL</li><li>HTML</li><li>CSS</li></ul></div>
+<div class="card"><h3>Backend</h3><ul class="tags"><li>FastAPI</li><li>Flask</li><li>Express</li><li>Pydantic</li></ul></div>
+<div class="card"><h3>ML</h3><ul class="tags"><li>PyTorch</li><li>Линейная алгебра</li></ul></div>
+</div>
+<div class="card" style="margin-top:16px"><p>Окончил IT-школу с красным дипломом. Самостоятельно прошёл курсы Яндекс Лицея и «Сириуса». Хочу научиться промышленному ML и MLOps, построению нагруженных сервисов и глубокому обучению.</p></div>
+</section>
 
-        <h3 style="margin-top: 28px">Галерея достижений</h3>
-        <div class="gallery">
-          <figure>
-            <a href="img/sirius.jpg" target="_blank"
-              ><img
-                src="img/sirius.jpg"
-                alt="Сертификат «Сириус»"
-                loading="lazy"
-            /></a>
-            <figcaption>
-              «Введение в машинное обучение», «Сириус», 2026, с отличием
-            </figcaption>
-          </figure>
-          <figure>
-            <a href="img/guap.jpg" target="_blank"
-              ><img src="img/guap.jpg" alt="Сертификат ГУАП" loading="lazy"
-            /></a>
-            <figcaption>
-              «Ты — опора: лидерство в IT-команде», ГУАП, 22.10.2026
-            </figcaption>
-          </figure>
-          <figure>
-            <a href="img/vremyait.jpg" target="_blank"
-              ><img
-                src="img/vremyait.jpg"
-                alt="Сертификат хакатона «Время IT»"
-                loading="lazy"
-            /></a>
-            <figcaption>Хакатон «Время IT», ГУАП, октябрь 2026</figcaption>
-          </figure>
-          <figure>
-            <a href="img/unigamelab.jpg" target="_blank"
-              ><img
-                src="img/unigamelab.jpg"
-                alt="Сертификат ЮниГеймЛаб"
-                loading="lazy"
-            /></a>
-            <figcaption>Джем «ЮниГеймЛаб 1.2», НГУАДИ, октябрь 2025</figcaption>
-          </figure>
-        </div>
+<section id="portfolio">
+<h2>Портфолио</h2>
+<h3>Проекты</h3>
+<div class="grid">
+<div class="card"><h3>2D-игра</h3><p>Игра, созданная командой Drunk Wizard Studio на джеме ЮниГеймЛаб.</p></div>
+<div class="card"><h3>Сайт — аналог Wildberries</h3><p>Fullstack-проект маркетплейса: каталог товаров и серверная часть.</p></div>
+<div class="card"><h3>Сайт для слепой печати</h3><p>Веб-тренажёр для развития навыка печати вслепую.</p></div>
+</div>
+<p>Код проектов — на <a href="https://github.com/bambaleylaorigin" target="_blank" rel="noopener">GitHub</a>.</p>
 
-        <h3 style="margin-top: 28px">Курсы Яндекс Лицея</h3>
-        <ul class="links">
-          <li>
-            <a href="img/html.jpg" target="_blank">HTML и CSS · 19.09.2026</a>
-          </li>
-          <li>
-            <a href="img/js.jpg" target="_blank">JavaScript · 26.09.2026</a>
-          </li>
-          <li><a href="img/sql.jpg" target="_blank">SQL · 12.10.2026</a></li>
-          <li>
-            <a href="img/linalg.jpg" target="_blank"
-              >Линейная алгебра · 29.10.2026</a
-            >
-          </li>
-        </ul>
-      </section>
+<h3 style="margin-top:28px">Галерея достижений</h3>
+<div class="gallery">
+<figure><a href="img/sirius.jpg" target="_blank"><img src="img/sirius.jpg" alt="Сертификат «Сириус»" loading="lazy"></a><figcaption>«Введение в машинное обучение», «Сириус», 2026, с отличием</figcaption></figure>
+<figure><a href="img/guap.jpg" target="_blank"><img src="img/guap.jpg" alt="Сертификат ГУАП" loading="lazy"></a><figcaption>«Ты — опора: лидерство в IT-команде», ГУАП, 22.10.2026</figcaption></figure>
+<figure><a href="img/vremyait.jpg" target="_blank"><img src="img/vremyait.jpg" alt="Сертификат хакатона «Время IT»" loading="lazy"></a><figcaption>Хакатон «Время IT», ГУАП, октябрь 2026</figcaption></figure>
+<figure><a href="img/unigamelab.jpg" target="_blank"><img src="img/unigamelab.jpg" alt="Сертификат ЮниГеймЛаб" loading="lazy"></a><figcaption>Джем «ЮниГеймЛаб 1.2», НГУАДИ, октябрь 2025</figcaption></figure>
+</div>
 
-      <section id="contacts">
-        <h2>Контакты</h2>
-        <div class="contacts">
-          <div class="card">
-            <h3>Свяжитесь со мной</h3>
-            <p>Телефон: <a href="tel:+79991234567">+7 (999) 123-45-67</a></p>
-            <p>Email: <a href="mailto:example@mail.ru">example@mail.ru</a></p>
-            <p>
-              GitHub:
-              <a
-                href="https://github.com/bambaleylaorigin"
-                target="_blank"
-                rel="noopener"
-                >bambaleylaorigin</a
-              >
-            </p>
-          </div>
-          <form id="feedback" class="card" novalidate>
-            <label
-              >Имя<input type="text" id="name" name="name" required /><span
-                class="err"
-                id="e-name"
-              ></span
-            ></label>
-            <label
-              >Email<input type="email" id="email" name="email" required /><span
-                class="err"
-                id="e-email"
-              ></span
-            ></label>
-            <label
-              >Сообщение<textarea
-                id="msg"
-                name="message"
-                rows="4"
-                required
-              ></textarea
-              ><span class="err" id="e-msg"></span
-            ></label>
-            <button class="btn" type="submit">Отправить</button>
-            <span class="err ok" id="ok"></span>
-          </form>
-        </div>
-      </section>
-    </main>
+<h3 style="margin-top:28px">Курсы Яндекс Лицея</h3>
+<ul class="links">
+<li><a href="img/html.jpg" target="_blank">HTML и CSS · 19.09.2026</a></li>
+<li><a href="img/js.jpg" target="_blank">JavaScript · 26.09.2026</a></li>
+<li><a href="img/sql.jpg" target="_blank">SQL · 12.10.2026</a></li>
+<li><a href="img/linalg.jpg" target="_blank">Линейная алгебра · 29.10.2026</a></li>
+</ul>
+</section>
 
-    <footer>
-      <div class="soc">
-        <a
-          href="https://github.com/bambaleylaorigin"
-          target="_blank"
-          rel="noopener"
-          aria-label="GitHub"
-          ><svg viewBox="0 0 24 24">
-            <path
-              d="M12 .5a11.5 11.5 0 0 0-3.64 22.41c.58.1.79-.25.79-.56v-2c-3.2.7-3.88-1.37-3.88-1.37-.52-1.33-1.28-1.69-1.28-1.69-1.05-.72.08-.7.08-.7 1.16.08 1.77 1.19 1.77 1.19 1.03 1.77 2.7 1.26 3.36.96.1-.75.4-1.26.73-1.55-2.55-.29-5.24-1.28-5.24-5.69 0-1.26.45-2.28 1.19-3.09-.12-.29-.52-1.46.11-3.05 0 0 .97-.31 3.17 1.18a11 11 0 0 1 5.77 0c2.2-1.49 3.17-1.18 3.17-1.18.63 1.59.23 2.76.11 3.05.74.81 1.19 1.83 1.19 3.09 0 4.42-2.7 5.4-5.26 5.68.41.36.78 1.06.78 2.14v3.17c0 .31.21.67.8.56A11.5 11.5 0 0 0 12 .5z"
-            /></svg
-        ></a>
-        <a
-          href="https://t.me/your_username"
-          target="_blank"
-          rel="noopener"
-          aria-label="Telegram"
-          ><svg viewBox="0 0 24 24">
-            <path
-              d="M21.9 4.1 2.8 11.4c-1.3.5-1.3 1.3-.2 1.6l4.9 1.5 1.9 5.8c.2.6.1.8.7.8.5 0 .7-.2 1-.5l2.4-2.3 4.9 3.6c.9.5 1.5.2 1.7-.8L23 5.4c.3-1.3-.5-1.9-1.1-1.3zM9 14l9.3-5.9c.4-.3.8-.1.5.2L11 15.5l-.3 3.3L9 14z"
-            /></svg
-        ></a>
-        <a
-          href="https://vk.com/your_id"
-          target="_blank"
-          rel="noopener"
-          aria-label="ВКонтакте"
-          ><svg viewBox="0 0 24 24">
-            <path
-              d="M12.8 17.5C6.5 17.5 3 13.2 2.8 6.5h3c.1 4.9 2.3 7 4.1 7.4V6.5h2.8v4.2c1.7-.2 3.5-2.1 4.1-4.2h2.8c-.5 2.6-2.4 4.5-3.7 5.3 1.3.6 3.4 2.2 4.2 5.7h-3.1c-.7-2.1-2.3-3.7-4.4-3.9v3.900h-.3z"
-            /></svg
-        ></a>
-      </div>
-      <p>
-        Тел.: <a href="tel:+79991234567">+7 (999) 123-45-67</a> ·
-        <a href="mailto:example@mail.ru">example@mail.ru</a>
-      </p>
-      <p>© 2026 Малыгин Артём Степанович · группа 4616 · ГУАП</p>
-    </footer>
+<section id="contacts">
+<h2>Контакты</h2>
+<div class="contacts">
+<div class="card">
+<h3>Свяжитесь со мной</h3>
+<p>Телефон: <a href="tel:+79991234567">+7 (999) 123-45-67</a></p>
+<p>Email: <a href="mailto:example@mail.ru">example@mail.ru</a></p>
+<p>GitHub: <a href="https://github.com/bambaleylaorigin" target="_blank" rel="noopener">bambaleylaorigin</a></p>
+</div>
+<form id="feedback" class="card" novalidate>
+<label>Имя<input type="text" id="name" name="name" required><span class="err" id="e-name"></span></label>
+<label>Email<input type="email" id="email" name="email" required><span class="err" id="e-email"></span></label>
+<label>Сообщение<textarea id="msg" name="message" rows="4" required></textarea><span class="err" id="e-msg"></span></label>
+<button class="btn" type="submit">Отправить</button>
+<span class="err ok" id="ok"></span>
+</form>
+</div>
+</section>
+</main>
 
-    <script>
-      // Плавная прокрутка по меню
-      document.querySelectorAll('a[href^="#"]').forEach((a) => {
-        a.addEventListener("click", (e) => {
-          const t = document.querySelector(a.getAttribute("href"));
-          if (t) {
-            e.preventDefault();
-            t.scrollIntoView({ behavior: "smooth", block: "start" });
-          }
-        });
-      });
-      // Валидация формы
-      const f = document.getElementById("feedback");
-      f.addEventListener("submit", (e) => {
-        e.preventDefault();
-        const name = f.name.value.trim(),
-          email = f.email.value.trim(),
-          msg = f.message.value.trim();
-        const set = (id, t) => (document.getElementById(id).textContent = t);
-        set("e-name", name ? "" : "Введите имя");
-        set(
-          "e-email",
-          !email
-            ? "Введите email"
-            : !email.includes("@")
-              ? "Email должен содержать символ @"
-              : "",
-        );
-        set("e-msg", msg ? "" : "Введите сообщение");
-        document.getElementById("ok").textContent = "";
-        if (name && email.includes("@") && msg) {
-          document.getElementById("ok").textContent =
-            "Спасибо, " + name + "! Сообщение отправлено.";
-          f.reset();
-        }
-      });
-    </script>
-  </body>
+<footer>
+<div class="soc">
+<a href="https://github.com/bambaleylaorigin" target="_blank" rel="noopener" aria-label="GitHub"><svg viewBox="0 0 24 24"><path d="M12 .5a11.5 11.5 0 0 0-3.64 22.41c.58.1.79-.25.79-.56v-2c-3.2.7-3.88-1.37-3.88-1.37-.52-1.33-1.28-1.69-1.28-1.69-1.05-.72.08-.7.08-.7 1.16.08 1.77 1.19 1.77 1.19 1.03 1.77 2.7 1.26 3.36.96.1-.75.4-1.26.73-1.55-2.55-.29-5.24-1.28-5.24-5.69 0-1.26.45-2.28 1.19-3.09-.12-.29-.52-1.46.11-3.05 0 0 .97-.31 3.17 1.18a11 11 0 0 1 5.77 0c2.2-1.49 3.17-1.18 3.17-1.18.63 1.59.23 2.76.11 3.05.74.81 1.19 1.83 1.19 3.09 0 4.42-2.7 5.4-5.26 5.68.41.36.78 1.06.78 2.14v3.17c0 .31.21.67.8.56A11.5 11.5 0 0 0 12 .5z"/></svg></a>
+<a href="https://t.me/your_username" target="_blank" rel="noopener" aria-label="Telegram"><svg viewBox="0 0 24 24"><path d="M21.9 4.1 2.8 11.4c-1.3.5-1.3 1.3-.2 1.6l4.9 1.5 1.9 5.8c.2.6.1.8.7.8.5 0 .7-.2 1-.5l2.4-2.3 4.9 3.6c.9.5 1.5.2 1.7-.8L23 5.4c.3-1.3-.5-1.9-1.1-1.3zM9 14l9.3-5.9c.4-.3.8-.1.5.2L11 15.5l-.3 3.3L9 14z"/></svg></a>
+<a href="https://vk.com/your_id" target="_blank" rel="noopener" aria-label="ВКонтакте"><svg viewBox="0 0 24 24"><path d="M12.8 17.5C6.5 17.5 3 13.2 2.8 6.5h3c.1 4.9 2.3 7 4.1 7.4V6.5h2.8v4.2c1.7-.2 3.5-2.1 4.1-4.2h2.8c-.5 2.6-2.4 4.5-3.7 5.3 1.3.6 3.4 2.2 4.2 5.7h-3.1c-.7-2.1-2.3-3.7-4.4-3.9v3.900h-.3z"/></svg></a>
+</div>
+<p>Тел.: <a href="tel:+79991234567">+7 (999) 123-45-67</a> · <a href="mailto:example@mail.ru">example@mail.ru</a></p>
+<p>© 2026 Малыгин Артём Степанович · группа 4616 · ГУАП</p>
+</footer>
+
+<script>
+// Плавная прокрутка по меню
+document.querySelectorAll('a[href^="#"]').forEach(a=>{
+  a.addEventListener('click',e=>{
+    const t=document.querySelector(a.getAttribute('href'));
+    if(t){e.preventDefault();t.scrollIntoView({behavior:'smooth',block:'start'});}
+  });
+});
+// Валидация формы
+const f=document.getElementById('feedback');
+f.addEventListener('submit',e=>{
+  e.preventDefault();
+  const name=f.name.value.trim(), email=f.email.value.trim(), msg=f.message.value.trim();
+  const set=(id,t)=>document.getElementById(id).textContent=t;
+  set('e-name',name?'':'Введите имя');
+  set('e-email',!email?'Введите email':(!email.includes('@')?'Email должен содержать символ @':''));
+  set('e-msg',msg?'':'Введите сообщение');
+  document.getElementById('ok').textContent='';
+  if(name && email.includes('@') && msg){
+    document.getElementById('ok').textContent='Спасибо, '+name+'! Сообщение отправлено.';
+    f.reset();
+  }
+});
+</script>
+</body>
 </html>
