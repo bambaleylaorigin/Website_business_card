@@ -33,3 +33,32 @@ h3{margin:0 0 8px;font-size:1.1rem}
 .timeline b{color:var(--accent2)}
 footer{text-align:center;color:var(--muted);padding:40px 20px;border-top:1px solid var(--line)}
 @media(max-width:560px){dl{grid-template-columns:1fr}dt{margin-top:6px}}
+/* --- v2 --- */
+.brand{display:flex;align-items:center;gap:8px;margin-right:auto;color:var(--text);text-decoration:none;font-weight:700}
+.brand svg{width:30px;height:30px}
+header.nav nav{align-items:center}
+.hero-wrap{max-width:1000px;margin:auto;padding:70px 20px 40px;display:grid;gap:36px;grid-template-columns:1.4fr 1fr;align-items:center}
+.hero-wrap .hero{padding:0;margin:0;max-width:none}
+.photo{width:100%;max-width:340px;aspect-ratio:4/5;object-fit:cover;border-radius:20px;border:2px solid var(--accent);justify-self:center}
+.deco{width:100%;height:auto;display:block;margin-top:24px;max-width:520px}
+.gallery{display:grid;gap:24px 16px;grid-template-columns:repeat(2,1fr);align-items:start}
+.gallery figure{margin:0}
+.gallery img{width:100%;height:auto;border-radius:10px;background:#fff;display:block;border:1px solid var(--line)}
+.gallery figcaption{color:var(--muted);font-size:.9rem;margin-top:8px}
+.links{display:flex;flex-wrap:wrap;gap:10px;margin-top:14px;padding:0;list-style:none}
+.links a{display:block;padding:8px 14px;border:1px solid var(--line);border-radius:8px;text-decoration:none;background:#232846}
+form{display:grid;gap:14px}
+label{display:grid;gap:6px;color:var(--muted);font-size:.92rem}
+input,textarea{font:inherit;padding:10px 12px;border-radius:8px;border:1px solid var(--line);background:#0f1220;color:var(--text);width:100%}
+input:focus,textarea:focus{outline:2px solid var(--accent)}
+.err{color:#ff7b7b;font-size:.85rem;min-height:1em}
+.ok{color:var(--accent2)}
+button.btn{border:0;cursor:pointer;font:inherit;font-weight:600;justify-self:start}
+.contacts{display:grid;gap:20px;grid-template-columns:1fr 1.3fr;align-items:start}
+footer .soc{display:flex;gap:14px;justify-content:center;margin:14px 0}
+footer .soc a{width:42px;height:42px;border-radius:50%;border:1px solid var(--line);display:grid;place-items:center;color:var(--text)}
+footer .soc a:hover{border-color:var(--accent);color:var(--accent)}
+footer .soc svg{width:22px;height:22px;fill:currentColor}
+footer a{color:var(--accent)}
+@media(max-width:760px){.hero-wrap,.contacts{grid-template-columns:1fr}.photo{max-width:260px}}
+@media(max-width:480px){.gallery{grid-template-columns:1fr}.brand span{display:none}}
